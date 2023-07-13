@@ -1,0 +1,6 @@
+*init.sql
+*main.sql
+tmp*
+# Large files
+names.sql
+metal-bands.sql

@@ -10,7 +10,7 @@ BEGIN
     (SELECT us.id, pr.id AS proj_id, pr.weight, cor.score FROM
       corrections cor LEFT JOIN
       projects pr ON pr.id = cor.project_id LEFT JOIN
-      users us ON us.id = cor.user_id WHERE us.id =2) AS res;
+      users us ON us.id = cor.user_id WHERE us.id = user_id) AS res;
   
   -- store the computed score in the user's average_score column
   UPDATE users SET average_score = avg_wgt_score

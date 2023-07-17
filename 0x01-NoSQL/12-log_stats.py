@@ -20,7 +20,7 @@ def show_nginx_stats(mongo_collection, method_option=None):
 
     for method in METHODS:
         method_count = mongo_collection.count_documents(
-            {"method": {"$regex": method}}
+            {"method": {"$in": [method]}}
         )
         print("\t{}: {}".format(method, method_count))
 

@@ -3,6 +3,9 @@
 
 
 def update_topics(mongo_collection, topic: list) -> list:
-    """ Updates a document """
+    """ Find documents that match a criterium """
 
-    return mongo_collection.find({"topic": topic})
+    documents = []
+    for school in mongo_collection.find({"topics": {"$in": [topic]}}):
+        documents.append(school)
+    return documents

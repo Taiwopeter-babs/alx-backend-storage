@@ -22,7 +22,7 @@ def show_nginx_stats(mongo_collection, method_option=None):
         method_count = mongo_collection.count_documents(
             {"method": {"$in": [method]}}
         )
-        print("\t{}: {}".format(method, method_count))
+        print("\tmethod {}: {}".format(method, method_count))
 
     status_path_check = mongo_collection.count_documents({"path": "/status"})
     print(f"{status_path_check} status check")

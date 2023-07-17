@@ -8,7 +8,7 @@ METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE"]
 
 def show_nginx_stats(mongo_collection, method_option=None):
     """Show formatted nginx stats in mongo db
-    recursively printing stats w.r.t the methods in METHODS
+    printing stats w.r.t the methods in METHODS
     """
 
     num_of_docs = mongo_collection.count_documents({})

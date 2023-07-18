@@ -1,2 +1,2 @@
 // find document with regex
-db.school.find({ name: { $regex: "/^Holberton/" } })
+db.school.find({ "name": { $regex: /^Holberton/ } })

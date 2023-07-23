@@ -16,9 +16,9 @@ def track_access(func: Callable):
     def wrapper(*args, **kwargs):
         """Wrapper function"""
         url_key = "count:{}".format(*args)
-        print(url_key)
         incr_val = redis_cli.incr(url_key, 1)
         redis_cli.set(url_key, incr_val, ex=10, xx=True)
+        # print(incr_val)
         return func(args, **kwargs)
     return wrapper
 
@@ -31,7 +31,3 @@ def get_page(url: str) -> str:
         return req.text
     except Exception:
         return ""
-
-
-res = get_page(url_arg)
-print(res)

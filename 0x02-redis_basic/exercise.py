@@ -65,6 +65,7 @@ def replay(func: Optional[Callable] = None) -> None:
         out_list = redis_cli.lrange(func_out_list, 0, -1)
         combined_list = zip(input_list, out_list)
 
+        print("{} was called {} times".format(func_keyname, call_times))
         for inp, out in list(combined_list):
             print("{}(*{}) -> {}".format(func_keyname, inp.decode(),
                                          out.decode()))
@@ -80,7 +81,7 @@ class Cache:
 
     @call_history
     @count_calls
-    def store(self, data: Union[str, int, float, bytes]) -> str:
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """sets a value to a key in redis and returns the key"""
         new_key = str(uuid4())
         self._redis.set(new_key, data)
@@ -108,4 +109,5 @@ class Cache:
         return int(data)
 
     def get_str(self, data: str) -> str:
+        """returns string object"""
         return data

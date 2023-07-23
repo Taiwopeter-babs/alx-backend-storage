@@ -65,7 +65,7 @@ def replay(func: Optional[Callable] = None) -> None:
         out_list = redis_cli.lrange(func_out_list, 0, -1)
         combined_list = zip(input_list, out_list)
 
-        print("{} was called {} times".format(func_keyname, call_times))
+        print("{} was called {} times:".format(func_keyname, call_times))
         for inp, out in list(combined_list):
             print("{}(*{}) -> {}".format(func_keyname, inp.decode(),
                                          out.decode()))
